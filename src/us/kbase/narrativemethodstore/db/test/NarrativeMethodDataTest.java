@@ -107,19 +107,34 @@ public class NarrativeMethodDataTest {
 
     @Test
     public void standardDropDown() throws Exception {
-        final NarrativeMethodData nmd = load(8);
+        final NarrativeMethodData nmd = load(12);
         // 3 has multiselection disabled
         // 6 has it enabled
 
         final DropdownOptions ddoSingle = nmd.getMethodSpec().getParameters().get(3)
                 .getDropdownOptions();
         assertThat("incorrect multiselect: false", ddoSingle.getMultiselection(), is(0L));
+
+        final DropdownOptions ddoMulti = nmd.getMethodSpec().getParameters().get(6)
+                .getDropdownOptions();
+        // should be true
+        assertThat("incorrect multiselect: true", ddoMulti.getMultiselection(), is(1L));
+    }
+
+    public void standardDropDownTestFails() throws Exception {
+        final NarrativeMethodData nmd = load(12);
+        // 3 has multiselection disabled
+        // 6 has it enabled
+
+        final DropdownOptions ddoSingle = nmd.getMethodSpec().getParameters().get(3)
+                .getDropdownOptions();
+        // should be false
         assertThat("incorrect multiselect: true", ddoSingle.getMultiselection(), is(1L));
 
         final DropdownOptions ddoMulti = nmd.getMethodSpec().getParameters().get(6)
                 .getDropdownOptions();
+        // should be true
         assertThat("incorrect multiselect: false", ddoMulti.getMultiselection(), is(0L));
-        assertThat("incorrect multiselect: true", ddoMulti.getMultiselection(), is(1L));
     }
 
     @Test
