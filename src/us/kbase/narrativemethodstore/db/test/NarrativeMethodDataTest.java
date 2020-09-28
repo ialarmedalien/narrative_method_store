@@ -113,11 +113,13 @@ public class NarrativeMethodDataTest {
 
         final DropdownOptions ddoSingle = nmd.getMethodSpec().getParameters().get(3)
                 .getDropdownOptions();
-        assertThat("incorrect multiselect", ddoSingle.getMultiselection(), is(0L));
+        assertThat("incorrect multiselect: false", ddoSingle.getMultiselection(), is(0L));
+        assertThat("incorrect multiselect: true", ddoSingle.getMultiselection(), is(1L));
 
         final DropdownOptions ddoMulti = nmd.getMethodSpec().getParameters().get(6)
                 .getDropdownOptions();
-        assertThat("incorrect multiselect", ddoMulti.getMultiselection(), is(1L));
+        assertThat("incorrect multiselect: false", ddoMulti.getMultiselection(), is(0L));
+        assertThat("incorrect multiselect: true", ddoMulti.getMultiselection(), is(1L));
     }
 
     @Test
