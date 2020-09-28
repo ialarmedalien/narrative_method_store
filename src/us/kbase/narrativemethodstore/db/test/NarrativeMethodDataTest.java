@@ -121,6 +121,7 @@ public class NarrativeMethodDataTest {
         assertThat("incorrect multiselect: true", ddoMulti.getMultiselection(), is(1L));
     }
 
+    @Test
     public void standardDropDownTestFails() throws Exception {
         final NarrativeMethodData nmd = load(12);
         // 3 has multiselection disabled
